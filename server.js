@@ -1,5 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true })
 
 const app = express()
 
