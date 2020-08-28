@@ -2,8 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true })
-
 const app = express()
 
 // config
@@ -11,6 +9,14 @@ const config = require('./config/index.js')
 
 // Routes
 const sneakers = require('./routes/sneakers.js')
+
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true })
+const db = mongoose.connection
+
+db.on('error', error => console.log(error))
+db.once('open', () => {
+    console.log('We in there!! connected to mongoose')
+})
 
 app.use(bodyParser.json({ limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true,limit: '50mb' }));
