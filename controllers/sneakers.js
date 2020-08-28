@@ -1,5 +1,5 @@
 const Sneaker = require("../models/sneakers.js")
-
+const mongoose = require('mongoose')
 
 exports.sneakers_get_all = (req, res, next) =>  { 
     Sneaker.find()
