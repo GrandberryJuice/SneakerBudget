@@ -11,7 +11,7 @@ const config = require('./config/index.js')
 // Routes
 const sneakers = require('./routes/sneakers.js')
 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
 const db = mongoose.connection
 
 db.on('error', error => console.log(error))
